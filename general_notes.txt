@@ -1,0 +1,4 @@
+# <a\s+(?:[^>]*?\s+)?href=(["'])(.*?)\1
+
+# this one works:
+# <a href="\/\/i\.4cdn\.org\/wg\/\d{13}\.[a-zA-Z]*
