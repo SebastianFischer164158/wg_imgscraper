@@ -1,9 +1,7 @@
 import re
 import requests
-https = r'https:'
-base = r'//i.4cdn.org/wg/'
-identifier = fr'<a href="{base}'
-main_url = fr'{https}//boards.4chan.org/wg/thread/'
+from constants import *
+from tqdm import tqdm
 
 
 def imgscraper(thread_id: str) -> str:
