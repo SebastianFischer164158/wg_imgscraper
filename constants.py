@@ -1,0 +1,5 @@
+https = r'https:'
+base = r'//i.4cdn.org/wg/'
+identifier = fr'<a href="{base}'
+main_url = fr'{https}//boards.4chan.org/wg/thread/'
+saving_path = r'D:/Downloads/WallPapers4chanwg/'
