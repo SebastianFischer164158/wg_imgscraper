@@ -2,12 +2,18 @@ from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtWidgets import QWidget, QPushButton, QLineEdit, QLabel, \
     QVBoxLayout, QFileDialog
 
+from scraper import imgscraper
+
 
 class WgimgscraperApp(QWidget):
     def __init__(self):
         super().__init__()
+
+        # initial
         self.resize(300, 150)
         self.setFixedSize(self.size())
+
+        # widgets
 
         self.select_dir_button = QPushButton('Select Directory')
 
@@ -17,6 +23,7 @@ class WgimgscraperApp(QWidget):
         self.info_label = QLabel('Enter a thread ID in order to extract all '
                                  'images')
 
+        # layout
         layout = QVBoxLayout()
         layout.addWidget(self.info_label)
         layout.addWidget(self.thread_id_line_edit)
@@ -25,8 +32,13 @@ class WgimgscraperApp(QWidget):
 
         self.setLayout(layout)
 
+        # on click events
         self.select_dir_button.clicked.connect(self.get_dir)
 
     @pyqtSlot()
     def get_dir(self):
         file_select = QFileDialog.getExistingDirectory(self, 'Select Directory')
+
+    @pyqtSlot()
+    def start_download(self):
+        pass
