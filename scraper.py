@@ -24,14 +24,16 @@ def imgscraper(thread_id: str, dir_to_store: str) -> int:
         matches2 = re.findall(regex_pics_is24chan, html_response)
         matches = matches1 + matches2
 
-        for pic_id in tqdm(matches, ascii=True, desc='Downloaded'):
+        for pic_id, title, ext in tqdm(matches, ascii=True, desc='Downloaded'):
             # pic_id example -> 1606735091906.jpg
+            print(pic_id)
             full_pic_url = fr'{https}{base}{pic_id}'
             try:
                 pic_req = requests.get(full_pic_url)
 
                 if pic_req.status_code == 200:
-                    complete_saving_path = os.path.join(dir_to_store, pic_id)
+                    name = title + "." + ext
+                    complete_saving_path = os.path.join(dir_to_store, name)
                     with open(f"{complete_saving_path}", 'wb') as picfile:
                         picfile.write(pic_req.content)
                 else:
