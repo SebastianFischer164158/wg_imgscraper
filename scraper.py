@@ -15,11 +15,14 @@ def imgscraper(thread_id: str, dir_to_store: str) -> int:
     if request.status_code == 200:
 
         html_response = request.text
+        print(html_response)
         # regex_pics = r'<a href="//i\.4cdn\.org/wg/(\d{13}\.[a-zA-Z]*)'
         # href="\/\/is2\.4chan\.org\/wg\/(\d{13}\.[a-zA-Z]*)
         # do not break regexes as they will fail if indented/newlined/etc.
-        regex_pics_4chan = r'href="\/\/i\.4cdn\.org\/wg\/(\d{13}\.[a-zA-Z]*)'
-        regex_pics_is24chan = r'href="\/\/is2\.4chan\.org\/wg\/(\d{13}\.[a-zA-Z]*)'
+        # regex_pics_4chan = r'href="\/\/i\.4cdn\.org\/wg\/(\d{13}\.[a-zA-Z]*)'
+        regex_pics_4chan = """href=\"\/\/i\.4cdn\.org\/wg\/(\d{13}\.[a-zA-Z]*)\"\s*target=\"_blank\">([a-zA-Z_0-9-(.)!?'";.\s]+?)(?=\.(jpg|png)<\/a>)"""
+        # regex_pics_is24chan = r'href="\/\/is2\.4chan\.org\/wg\/(\d{13}\.[a-zA-Z]*)
+        regex_pics_is24chan = """href=\"\/\/is2\.4chan\.org\/wg\/(\d{13}\.[a-zA-Z]*)\"\s*target=\"_blank\">([a-zA-Z_0-9-(.)!?'";.\s]+?)(?=\.(jpg|png)<\/a>)"""
         matches1 = re.findall(regex_pics_4chan, html_response)
         matches2 = re.findall(regex_pics_is24chan, html_response)
         matches = matches1 + matches2
