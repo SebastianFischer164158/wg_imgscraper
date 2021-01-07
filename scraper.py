@@ -5,12 +5,10 @@ from constants import *
 from tqdm import tqdm
 
 
-# TODO: Update so that the file is stored with the title of the uploaded
-#  file, not the ID.
-#  href=\"\/\/is2\.4chan\.org\/wg\/(\d{13}\.[a-zA-Z]*)\"\s*target=\"_blank\">(.+?)(?=\.(jpg|png)<)
+# TODO: fix regex to include umlaut matches; currently unable to find e.g. é û
 # https://regex101.com/r/Rnfqr7/1
-# need to find out how re.findall to capture group 2 for the titles.
-# should probably also then createa dict and populate with link (key) and title (value)
+# https://regex101.com/r/Rnfqr7/2
+#  also optimize regex so that it operates as a singular one
 
 def imgscraper(thread_id: str, dir_to_store: str) -> int:
     request = requests.get(main_url + thread_id)
