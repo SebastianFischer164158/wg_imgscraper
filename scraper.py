@@ -45,3 +45,7 @@ def imgscraper(thread_id: str, dir_to_store: str) -> int:
         raise Exception(f"200 was not returned -> error {request.status_code}")
 
     return 0
+
+#
+# if __name__ == '__main__':
+#     imgscraper("7704276", 'D:\\Downloads\\WallPapers4chanwg')
